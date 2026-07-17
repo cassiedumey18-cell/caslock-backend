@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Commission | Caslock Studio</title>
+</head>
+<body>
+    <h1>Submit a Commission</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Commission</button>
+    </form>
+
+</body>
+</html>

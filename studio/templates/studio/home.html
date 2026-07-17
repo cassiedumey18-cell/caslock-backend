@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caslock Studio Dashboard</title>
+</head>
+<body>
+    <h1>Caslock Studio Dashboard</h1>
+    
+    <form method="get" action="/">
+    <input type="text" name="search" placeholder="Search commissions..." value="{{ search_query }}">
+    <button type="submit">Search</button>
+</form>
+
+    <h2>All Commissions:</h2>
+{% for c in all_commissions %}
+    <p>
+        <a href="/commission/{{ c.id }}/">{{ c.name }}</a> 
+        - {{ c.get_style_display }} 
+        - {{ c.get_status_display }}
+    </p>
+{% empty %}
+    <p>No commissions yet</p>
+{% endfor %}
+
+
+    <h2>Total Commissions: {{ total }}</h2>
+
+    <p>Has pending commissions: {{ has_pending }}</p>
+
+    <h2>Pending CA Queue ({{ pending_CA.count }}):</h2>
+    {% for c in pending_CA %}
+        <p>{{ c.name }} - {{ c.get_style_display }} - {{ c.get_priority_display }}</p>
+    {% empty %}
+        <p>No pending CA commissions</p>
+    {% endfor %}
+
+    <h2>Top Priority (Pending IA and VIA):</h2>
+    {% for c in top_priority %}
+        <p>{{ c.name }} - {{ c.get_priority_display }} - {{ c.get_status_display }}</p>
+    {% empty %}
+        <p>No high priority commissions</p>
+    {% endfor %}
+
+    <h2>Active Commissions:</h2>
+    {% for c in active %}
+        <p>{{ c.name }} - {{ c.get_status_display }}</p>
+    {% empty %}
+        <p>No active commissions</p>
+    {% endfor %}
+
+    <h2>Names and Emails:</h2>
+    {% for c in names_only %}
+        <p>{{ c.name }} - {{ c.email }} - {{ c.status }}</p>
+    {% empty %}
+        <p>None</p>
+    {% endfor %}
+
+</body>
+</html>

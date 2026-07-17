@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Commission Detail</title>
+</head>
+<body>
+    <h1>Commission by {{ commission.name }}</h1>
+    
+    <p>Email: {{ commission.email }}</p>
+    <p>Style: {{ commission.get_style_display }}</p>
+    <p>Size: {{ commission.get_size_display }}</p>
+    <p>Priority: {{ commission.get_priority_display }}</p>
+    <p>Status: {{ commission.get_status_display }}</p>
+    <p>Description: {{ commission.description }}</p>
+    <p>Deadline: {{ commission.deadline|default:"No deadline" }}</p>
+    <p>Price: {{ commission.price|default:"Not set yet" }}</p>
+    <p>Deposit Paid: {{ commission.deposit_paid }}</p>
+    <p>Balance Paid: {{ commission.balance_paid }}</p>
+    <p>Submitted: {{ commission.created_at }}</p>
+
+    <a href="/">Back to Dashboard</a>
+</body>
+</html>
