@@ -1,7 +1,14 @@
 from rest_framework import serializers
-from .models import Commission, Artwork
+from .models import Commission, Artwork, Price
+
+class PriceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Price
+        fields = ['currency', 'amount']
 
 class ArtworkSerializer(serializers.ModelSerializer):
+    prices = PriceSerializer(many=True, read_only=True)
+
     class Meta:
         model = Artwork
         fields = [
@@ -9,11 +16,10 @@ class ArtworkSerializer(serializers.ModelSerializer):
             'title',
             'category',
             'size',
-            'price_ngn',
-            'price_usd',
             'image',
             'description',
             'status',
+            'prices',
         ]
 
 class CommissionSerializer(serializers.ModelSerializer):
