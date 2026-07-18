@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from .models import Commission, Artwork
 from .forms import CommissionForm
 from .serializers import ArtworkSerializer, CommissionSerializer
@@ -69,7 +71,7 @@ def api_artwork_detail(request, id):
     serializer = ArtworkSerializer(artwork)
     return Response(serializer.data)
 
-
+@csrf_exempt
 @api_view(['POST'])
 def api_submit_commission(request):
     serializer = CommissionSerializer(data=request.data)
