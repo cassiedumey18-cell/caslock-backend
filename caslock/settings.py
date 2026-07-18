@@ -140,5 +140,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://caslock-backend-production.up.railway.app',
+    'https://caslock-studio.netlify.app',
+]
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
