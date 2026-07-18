@@ -1,1 +1,1 @@
-web: gunicorn caslock.wsgi
+web: python manage.py migrate && gunicorn caslock.wsgi
