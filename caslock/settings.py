@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'caslock.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
+        default=os.environ.get('DATABASE_PUBLIC_URL') or os.environ.get('DATABASE_URL'),
         conn_max_age=600
     )
 }
